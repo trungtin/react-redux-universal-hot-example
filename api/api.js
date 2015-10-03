@@ -8,6 +8,7 @@ import * as actions from './actions/index';
 import PrettyError from 'pretty-error';
 import http from 'http';
 import SocketIo from 'socket.io';
+import Passport from 'passport'
 
 const pretty = new PrettyError();
 const app = express();
@@ -23,6 +24,8 @@ app.use(session({
   saveUninitialized: false,
   cookie: { maxAge: 60000 }
 }));
+app.use(Passport.initialize())
+app.use(Passport.session())
 app.use(bodyParser.json());
 
 
